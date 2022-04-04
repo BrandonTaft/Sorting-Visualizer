@@ -1,5 +1,5 @@
 
-function createArray(){
+
 const max = 100;
 const x = [];
 
@@ -11,14 +11,16 @@ for (let i = 0; i < max;) {
         bar.innerText = num;
         bar.classList.add('bar');
         bar.style.width = num + "%"
-        container.appendChild(bar)
+        container.appendChild(bar);
         x.push(num)
         i++
     }
 }
+
+function bubbleSort(){
+    
 }
-//console.log(x)
-    //return (x)
 
-
-//console.log(makeArr(max))
+function newArray(){
+    location.reload()
+    }
