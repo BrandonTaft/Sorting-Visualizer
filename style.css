@@ -1,0 +1,14 @@
+
+body{
+    background-color: darkslategray;
+}
+
+button{
+    background-color: transparent;
+}
+
+.bar{
+    background-color: greenyellow;
+    margin-bottom: 1%;
+    
+}
