@@ -55,8 +55,7 @@ async function bubbleSort() {
                     console.log(arr[j], tmp)
                     newBar[i].innerText=arr[j+1]
                     newBar[i+1].innerText=arr[j]
-                    
-
+                    newBar[j].style.width=tmp+"%"
             }
         
         }
