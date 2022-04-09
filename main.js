@@ -1,10 +1,11 @@
 
 
+//************* CREATE NEW RANDOM ARRAY **************** */
+
 const max = 10;
 const arr = [];
 
 for (let i = 0; i < max;) {
-
     let num = Math.floor(Math.random() * max + 1)
     while (arr.includes(num) === false) {
         const container = document.getElementById('container');
@@ -18,27 +19,8 @@ for (let i = 0; i < max;) {
     }
 }
 
-function swap(el1, el2) {
-    const newBar = document.getElementsByClassName('bar')
-    const style1 = window.getComputedStyle(newBar[i]);
-    const style2 = window.getComputedStyle(newBar[i + 1]);
-    const transform1 = style1.getPropertyValue("width");
-    const transform2 = style2.getPropertyValue("width");
-    el1.style.width = transform2;
-    el2.style.width = transform1;
-}
 
-function test() {
-    const newBar = document.getElementsByClassName('bar')
-    console.log(newBar[0])
-    for (let i = 0; i < newBar.length; i++) {
-        newBar[i].style.backgroundColor = "red"
-    }
-    //document.getElementById('container').style.backgroundColor="red"
-
-}
-
-
+//************* PERFORM BUBBLE SORT **************** */
 
 async function bubbleSort() {
     const newBar = document.getElementsByClassName('bar');
@@ -49,7 +31,7 @@ async function bubbleSort() {
         checked = false
 
         for (let i = 0; i < len; i++) {
-             //The element we are testing turns red
+            //The element we are testing turns red
             newBar[i].style.backgroundColor = "red"
             //Sets delay for the first iteration
             await new Promise(resolve => setTimeout(resolve, 1000));
@@ -81,39 +63,87 @@ async function bubbleSort() {
     return arr
 };
 
-async function selectionSort() { 
+
+//************* PERFORM SELECTION SORT **************** */
+
+async function selectionSort() {
     const newBar = document.getElementsByClassName('bar');
     const len = arr.length;
-        
-    for(let i = 0; i < len; i++) {
-        
+
+    for (let i = 0; i < len; i++) {
+        newBar[i].style.backgroundColor = "red"
         await new Promise(resolve => setTimeout(resolve, 1000));
         // Finding the smallest number in the subarray
         let min = i;
-        for(let j = i+1; j < len; j++){
-            newBar[j].style.backgroundColor = "red"
-            newBar[min].style.backgroundColor = "greenyellow"
-            if(arr[j] < arr[min]) {
-                min=j; 
-                //newBar[min].style.backgroundColor = "greenyellow"
+        for (let j = i + 1; j < len; j++) {
+            newBar[min].style.backgroundColor = "red"
+            newBar[j].style.backgroundColor = "blue"
+
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            if (arr[j] < arr[min]) {
+                newBar[min].style.backgroundColor = "greenyellow"
+                min = j;
             }
-         }
-         await new Promise(resolve => setTimeout(resolve, 1000));
-         if (min != i) {
-             // Swapping the elements
-             let tmp = arr[i]; 
-             arr[i] = arr[min];
-             arr[min] = tmp;   
-             newBar[i].innerText = arr[i]
-                newBar[i].style.width = arr[i] + "%"
-                newBar[i + 1].innerText = arr[i + 1]
-                newBar[i + 1].style.width = arr[i + 1] + "%"   
-                
+            newBar[j].style.backgroundColor = "greenyellow"
+            newBar[min].style.backgroundColor = "greenyellow"
+
         }
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        if (min != i) {
+            // Swapping the elements
+            let tmp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = tmp;
+            newBar[i].innerText = arr[i]
+            newBar[i].style.width = arr[i] + "%"
+            newBar[i].style.backgroundColor = "pink"
+            newBar[i].style.marginLeft = "50%"
+            newBar[min].innerText = arr[min]
+            newBar[min].style.width = arr[min] + "%"
+
+
+        } newBar[i].style.backgroundColor = "pink"
+        newBar[i].style.marginLeft = "50%"
+
     }
-    console.log(arr)
+
+    newBar[len - 1].style.backgroundColor = "pink"
+    newBar[i].style.marginLeft = "50%"
     return arr;
 }
+
+
+//************* PERFORM INSERTION SORT **************** */
+
+function insertionSort() {
+    const newBar = document.getElementsByClassName('bar');
+    const len = arr.length;
+
+        for (let i = 1; i < len; i++) {
+            // Choosing the first element in our unsorted subarray
+            let current = arr[i];
+            newBar[i].style.backgroundColor = "red"
+            // The last element of our sorted subarray
+            let j = i-1; 
+            while ((j > -1) && (current < arr[j])) {
+                arr[j+1] = arr[j];
+                j--;
+            }
+            arr[j+1] = current;
+        }
+    return arr;
+}
+
+
+//************* PERFORM QUICK SORT **************** */
+
+
+
+//************* PERFORM MERGE SORT **************** */
+
+
+
+//************* REFRESH THE ARRAY **************** */
 
 function newArray() {
     location.reload()
