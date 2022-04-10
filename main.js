@@ -2,7 +2,7 @@
 
 //************* CREATE NEW RANDOM ARRAY **************** */
 
-const max = 10;
+const max = 5;
 const arr = [];
 
 for (let i = 0; i < max;) {
@@ -115,28 +115,58 @@ async function selectionSort() {
 
 //************* PERFORM INSERTION SORT **************** */
 
-function insertionSort() {
+async function insertionSort() {
     const newBar = document.getElementsByClassName('bar');
     const len = arr.length;
-
+    newBar[0].style.backgroundColor = "green"
         for (let i = 1; i < len; i++) {
-            // Choosing the first element in our unsorted subarray
-            let current = arr[i];
-            newBar[i].style.backgroundColor = "red"
             // The last element of our sorted subarray
             let j = i-1; 
+            
+            // Choosing the first element in our unsorted subarray
+            let current = arr[i];
+            newBar[i].style.backgroundColor = "blue"
+            await new Promise(resolve => setTimeout(resolve, 3000));
             while ((j > -1) && (current < arr[j])) {
+                await new Promise(resolve => setTimeout(resolve, 3000));
+                newBar[j].innerText = arr[j+1]
                 arr[j+1] = arr[j];
+                newBar[j+1].innerText = arr[j]
+                newBar[j+1].style.backgroundColor = "green"
+                newBar[i].style.backgroundColor = "greenyellow"
                 j--;
             }
+            
+            
             arr[j+1] = current;
+            newBar[j+1].innerText = current
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            
         }
+        newBar[len].style.backgroundColor = "green"
     return arr;
 }
 
 
 //************* PERFORM QUICK SORT **************** */
 
+function partition(arr, start, end){
+    // Taking the last element as the pivot
+    const pivotValue = arr[end];
+    let pivotIndex = start; 
+    for (let i = start; i < end; i++) {
+        if (arr[i] < pivotValue) {
+        // Swapping elements
+        [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+        // Moving to next element
+        pivotIndex++;
+        }
+    }
+    
+    // Putting the pivot value in the middle
+    [arr[pivotIndex], arr[end]] = [arr[end], arr[pivotIndex]] 
+    return pivotIndex;
+};
 
 
 //************* PERFORM MERGE SORT **************** */
