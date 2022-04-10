@@ -122,28 +122,29 @@ async function insertionSort() {
         for (let i = 1; i < len; i++) {
             // The last element of our sorted subarray
             let j = i-1; 
-            
+            console.log(newBar[j])
             // Choosing the first element in our unsorted subarray
             let current = arr[i];
+            console.log(current)
             newBar[i].style.backgroundColor = "blue"
             await new Promise(resolve => setTimeout(resolve, 3000));
             while ((j > -1) && (current < arr[j])) {
                 await new Promise(resolve => setTimeout(resolve, 3000));
-                newBar[j].innerText = arr[j+1]
+                newBar[j].innerText = current
                 arr[j+1] = arr[j];
                 newBar[j+1].innerText = arr[j]
-                newBar[j+1].style.backgroundColor = "green"
-                newBar[i].style.backgroundColor = "greenyellow"
+                //newBar[j+1].style.backgroundColor = "greenyellow"
+                newBar[i].style.backgroundColor = "green"
                 j--;
             }
             
-            
+            newBar[j+1].style.backgroundColor = "green"
             arr[j+1] = current;
             newBar[j+1].innerText = current
             await new Promise(resolve => setTimeout(resolve, 3000));
             
         }
-        newBar[len].style.backgroundColor = "green"
+        
     return arr;
 }
 
