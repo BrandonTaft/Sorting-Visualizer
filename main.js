@@ -198,8 +198,9 @@ function mergeSort() {
     return arr 
   }
   
+  newBar[Math.floor(half)].style.marginBottom="10%"
   const left = arr.splice(0, half)
-  newBar[left.length-1].classList.add('left');
+  newBar[left.length-1].classList.add('left')
   return merge(mergeSort(left),mergeSort(arr))
 }
   
